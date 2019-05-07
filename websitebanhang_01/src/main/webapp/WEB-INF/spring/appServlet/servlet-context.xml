@@ -56,7 +56,7 @@
 		<beans:property name="driverClassName"
 			value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
 		<beans:property name="url"
-			value="jdbc:sqlserver://localhost:1433;databaseName=dbTest" />
+			value="jdbc:sqlserver://localhost:1433;databaseName=DB_BANHANG" />
 		<beans:property name="username" value="sa" />
 		<beans:property name="password" value="sapassword" />
 	</beans:bean>
