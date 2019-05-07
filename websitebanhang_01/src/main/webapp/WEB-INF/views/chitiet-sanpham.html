@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<title>Chi tiết sản phẩm <th:block
+		th:text="${sanpham.tenSanPham}"></th:block>
+</title>
+<link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
+<link rel="stylesheet" href="/assets/fonts/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
+<link rel="stylesheet" href="/assets/css/Navigation-Clean.css">
+<link rel="stylesheet" href="/assets/css/smoothproducts.css">
+</head>
+<body>
+	<nav
+		class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+		<div class="container">
+			<a class="navbar-brand logo" th:href="@{/}">EBIKE</a>
+			<button class="navbar-toggler" data-toggle="collapse"
+				data-target="#navcol-1">
+				<span class="sr-only">Toggle navigation</span><span
+					class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navcol-1">
+				<ul class="nav navbar-nav ml-auto">
+					<li class="nav-item" role="presentation"><a class="nav-link"
+						th:href="@{/}">Home</a></li>
+					<li class="nav-item" role="presentation"><a class="nav-link"
+						th:href="@{/sanpham}">Xe đạp điện</a></li>
+					<li class="nav-item" role="presentation"><a class="nav-link"
+						th:href="@{/lienhe}">Liên hệ</a></li>
+					<li class="nav-item" role="presentation"><a class="nav-link"
+						th:href="@{/giohang}">Giỏ hàng<i class="fa fa-shopping-cart"></i></a></li>
+					<li class="nav-item" role="presentation"><a class="nav-link"
+						th:href="@{/dangnhap}">Đăng nhập</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<main class="page product-page">
+	<section class="clean-block clean-product dark">
+		<div class="container">
+			<div class="block-heading">
+				<h2 class="text-info">Chi tiết sản phẩm</h2>
+				<p>Chi tiết - Sản phẩm</p>
+			</div>
+			<div class="block-content">
+				<div class="product-info">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="gallery">
+								<div class="sp-wrap">
+									<a th:href="@{resources/assets/img/tech/default-bike.png}"><img
+										class="img-fluid d-block mx-auto"
+										th:href="@{resources/assets/img/tech/image1.jpg}"></a><a
+										th:href="@{resources/assets/img/tech/image1.jpg}"><img
+										class="img-fluid d-block mx-auto"
+										th:src="@{resources/assets/img/tech/image1.jpg}"></a><a
+										th:href="@{resources/assets/img/tech/image1.jpg}"><img
+										class="img-fluid d-block mx-auto"
+										th:src="@{resources/assets/img/tech/image1.jpg}"></a>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="info">
+								<h3 th:text="${sanpham.tenSanPham}"></h3>
+								<div class="price">
+									<h3 th:text="${sanpham.donGia} + VND"></h3>
+								</div>
+								<button class="btn btn-primary" type="button">
+									<i class="icon-basket"></i>Thêm vào giỏ
+								</button>
+								<div class="summary">
+									<p th:text="${sanpham.moTa}"></p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="clean-related-items">
+					<h3>Sản phẩm tương tự</h3>
+					<div class="items">
+						<div class="row justify-content-center">
+							<div class="col-sm-6 col-lg-4">
+								<div class="clean-related-item">
+									<div class="image">
+										<a href="#"><img class="img-fluid d-block mx-auto"
+											th:src="@{resources/assets/img/tech/defaut-bike.png}"></a>
+									</div>
+									<div class="related-name">
+										<a href="#">Lorem Ipsum dolor</a>
+										<h4>#Pricce</h4>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-6 col-lg-4"></div>
+							<div class="col-sm-6 col-lg-4"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	</main>
+	<div th:replace="/header :: footer"></div>
+</body>
+</html>

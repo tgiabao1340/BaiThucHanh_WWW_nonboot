@@ -1,0 +1,37 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/header :: header">
+</head>
+<body>
+	<nav th:replace="/header :: navbar"></nav>
+	<main class="page">
+	<section class="clean-block slider">
+		<div class="container">
+			<div class="block-heading">
+				<h2 class="text-info">EBIKE</h2>
+				<p>Thông tin tài khoản</p>
+			</div>
+
+			<div class="container">
+				<form action="" th:object="${taikhoanct}">
+					<p>
+						Tên tài khoản: <input type="text" th:field="*{tenTaiKhoan}" />
+					</p>
+					<p>
+						Họ và Tên: <input type="text" th:field="*{khachHang.hoTenKhachHang}" />
+					</p>
+					<p>
+						Địa chỉ: <input type="text" th:field="*{khachHang.diaChi}" />
+					</p>	
+					<p>
+						Email: <input type="text" th:field="*{khachHang.email}" />
+					</p>
+					<p>
+						Số điện thoại: <input type="text" th:field="*{khachHang.soDienThoai}" />
+					</p>
+				</form>
+			</div>
+		</div>
+	</section>
+	<div th:replace="/header :: footer"></div>
+</body>
+</html>

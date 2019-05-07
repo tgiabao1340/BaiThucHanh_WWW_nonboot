@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<div th:replace="/header :: header"></div>
+</head>
+
+<body>
+	<div th:replace="/header :: navbar"></div>
+	<main class="page shopping-cart-page">
+	<section class="clean-block clean-cart dark">
+		<div class="container">
+			<div class="block-heading">
+				<h2 class="text-info">Giỏ Hàng</h2>
+			</div>
+			<div class="content">
+				<div class="row no-gutters">
+					<div class="col-md-12 col-lg-8">
+						<div class="items">
+							<div class="product">
+								<div class="row justify-content-center align-items-center"
+									th:each="hang :${giohang}">
+									<div class="col-md-3">
+										<div class="product-image">
+											<img class="img-fluid d-block mx-auto image"
+												th:href="@{resoures/assets/img/tech/default-bike.png}">
+										</div>
+									</div>
+									<div class="col-md-5 product-info">
+										<a href="#" class="product-name"
+											th:text="${hang.getKey().tenSanPham}"></a>
+										<div class="product-specs">
+											<div>
+												<span>NSX : &nbsp;</span><span class="value"
+													th:text="${hang.getKey().nhaSanXuat.tenNhaSanXuat}"></span>
+											</div>
+										</div>
+									</div>
+									<div class="col-6 col-md-2 quantity">
+										<label class="d-none d-md-block" for="quantity">Số
+											lượng</label><input type="number" th:value="${hang.getValue()}"
+											id="number" class="form-control quantity-input">
+									</div>
+									<div class="col-6 col-md-2 price">
+										<span th:text="${hang.getKey().donGia}"></span>
+									</div>
+									<a
+										th:href="@{'/giohang/xoasanpham/{maSanPham}'(maSanPham=${hang.getKey().maSanPham})}"><button
+											class="btn" type="button">Xóa</button></a>
+								</div>
+							</div>
+							<div class="product"></div>
+						</div>
+					</div>
+					<div class="col-md-12 col-lg-4">
+						<div class="summary">
+							<h3>thanh toán</h3>
+							<h4>
+								<span class="text">Tổng tiền</span><span class="price"
+									th:text="${tongtien}"></span>
+							</h4>
+							<a th:href="@{'/giohang/thanhtoan'}"><button
+									class="btn btn-primary btn-block btn-lg" type="button">Thanh toán</button></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	</main>
+	<div th:replace="/header :: footer"></div>
+</body>
+
+</html>
