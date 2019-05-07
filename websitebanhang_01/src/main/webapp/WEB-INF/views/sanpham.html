@@ -75,9 +75,9 @@
 									<div class="col-12 col-md-6 col-lg-4">
 										<div class="clean-product-item">
 											<div class="image">
-												<a th:href="@{/sanpham/${sanpham.maSanPham}}"><img
-													class="img-fluid d-block mx-auto"
-													th:src="@{resources/assets/img/tech/default-bike.png}"></a>
+												<a th:href="@{/sanpham/{id}(id=${sanpham.maSanPham})}"><img
+													class="img-fluid d-block mx-auto image"
+													th:src="@{${sanpham.imgURL}}"></a>
 											</div>
 											<div class="product-name">
 												<a th:href="@{/sanpham/${sanpham.maSanPham}}"
@@ -85,9 +85,12 @@
 											</div>
 											<div class="about">
 												<div class="rating">
-												<a th:href="@{'/giohang/themsanpham/{maSanPham}'(maSanPham=${sanpham.maSanPham})}" th:if="${sanpham.soLuongTon}>0">
-													<button  class="btn btn-primary" type="button" >Thêm vào giỏ</button>
-												</a>
+													<a
+														th:href="@{'/giohang/themsanpham/{maSanPham}'(maSanPham=${sanpham.maSanPham})}"
+														th:if="${sanpham.soLuongTon}>0">
+														<button class="btn btn-primary" type="button">Thêm
+															vào giỏ</button>
+													</a>
 												</div>
 												<div class="price">
 													<h3 th:text="${sanpham.donGia}"></h3>

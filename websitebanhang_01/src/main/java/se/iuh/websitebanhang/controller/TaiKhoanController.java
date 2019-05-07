@@ -56,7 +56,6 @@ public class TaiKhoanController {
 			for (Role role : listRole) {
 				if(role.getTen().equalsIgnoreCase("admin")){
 					isAdmin = true;
-					System.out.println(isAdmin);
 				}
 			}
 			session.setAttribute("isAdmin", isAdmin);
@@ -66,17 +65,17 @@ public class TaiKhoanController {
 	}
 	@RequestMapping("/dangky")
 	public String enterRegister(Model model) {
-		model.addAttribute("taikhoan",new TaiKhoan());
+		KhachHang kh = new KhachHang();	
+		TaiKhoan taikhoan = new TaiKhoan();
+		kh.setTaiKhoan(taikhoan);
+		model.addAttribute("taikhoan",taikhoan);
 		return "dangky";
 	}
 	@RequestMapping( value = "/dangky", method = RequestMethod.POST)
 	public String createNewUser(@ModelAttribute("taikhoan") TaiKhoan taiKhoan) {
-		KhachHang kh = new KhachHang();
-		kh.setTaiKhoan(taiKhoan);
 		taiKhoan.setRoles(new HashSet<>(Arrays.asList(roleRepository.findByTen("user"))));
-		taiKhoan.setKhachHang(kh);
 		if(TaiKhoanService.save(taiKhoan)) {
-			khachHangRepository.save(kh);
+			khachHangRepository.save(taiKhoan.getKhachHang());
 			return "redirect:/";
 		}
 		return "dangky";
@@ -94,7 +93,7 @@ public class TaiKhoanController {
 	@RequestMapping(value = "/taikhoanct", method = RequestMethod.GET)
 	public String currentUserName(Model model) {
 		if(userLoginService.getTaiKhoanLogin()!=null) {
-			model.addAttribute("taikhoanct", userLoginService.getTaiKhoanLogin());
+			model.addAttribute("taikhoanct",taiKhoanRepository.findById( userLoginService.getTaiKhoanLogin().getMaTaiKhoan()).get());
 			return "taikhoan";
 		}
 		return "redirect:/";
@@ -102,7 +101,7 @@ public class TaiKhoanController {
 	@RequestMapping(value = "/update-tk", method = RequestMethod.POST)
 	public String updateUser(@ModelAttribute("taikhoanct") TaiKhoan taiKhoan) {
 		
-		TaiKhoanService.update(taiKhoan);
+		TaiKhoanService.update(taiKhoan.getMaTaiKhoan(),taiKhoan.getKhachHang());
 		
 		return "redirect:/taikhoanct";
 	}

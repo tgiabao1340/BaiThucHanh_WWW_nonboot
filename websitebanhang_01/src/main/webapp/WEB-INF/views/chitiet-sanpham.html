@@ -1,48 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="https://thymeleaf.org">
 
-<head>
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-<title>Chi tiết sản phẩm <th:block
-		th:text="${sanpham.tenSanPham}"></th:block>
-</title>
-<link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
-<link rel="stylesheet" href="/assets/fonts/font-awesome.min.css">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
-<link rel="stylesheet" href="/assets/css/Navigation-Clean.css">
-<link rel="stylesheet" href="/assets/css/smoothproducts.css">
+<head th:replace="/header :: header">
 </head>
 <body>
-	<nav
-		class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
-		<div class="container">
-			<a class="navbar-brand logo" th:href="@{/}">EBIKE</a>
-			<button class="navbar-toggler" data-toggle="collapse"
-				data-target="#navcol-1">
-				<span class="sr-only">Toggle navigation</span><span
-					class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navcol-1">
-				<ul class="nav navbar-nav ml-auto">
-					<li class="nav-item" role="presentation"><a class="nav-link"
-						th:href="@{/}">Home</a></li>
-					<li class="nav-item" role="presentation"><a class="nav-link"
-						th:href="@{/sanpham}">Xe đạp điện</a></li>
-					<li class="nav-item" role="presentation"><a class="nav-link"
-						th:href="@{/lienhe}">Liên hệ</a></li>
-					<li class="nav-item" role="presentation"><a class="nav-link"
-						th:href="@{/giohang}">Giỏ hàng<i class="fa fa-shopping-cart"></i></a></li>
-					<li class="nav-item" role="presentation"><a class="nav-link"
-						th:href="@{/dangnhap}">Đăng nhập</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+	<div th:replace="/header :: navbar"></div>
 	<main class="page product-page">
 	<section class="clean-block clean-product dark">
 		<div class="container">
@@ -56,15 +18,8 @@
 						<div class="col-md-6">
 							<div class="gallery">
 								<div class="sp-wrap">
-									<a th:href="@{resources/assets/img/tech/default-bike.png}"><img
-										class="img-fluid d-block mx-auto"
-										th:href="@{resources/assets/img/tech/image1.jpg}"></a><a
-										th:href="@{resources/assets/img/tech/image1.jpg}"><img
-										class="img-fluid d-block mx-auto"
-										th:src="@{resources/assets/img/tech/image1.jpg}"></a><a
-										th:href="@{resources/assets/img/tech/image1.jpg}"><img
-										class="img-fluid d-block mx-auto"
-										th:src="@{resources/assets/img/tech/image1.jpg}"></a>
+									<img class="img-fluid d-block mx-auto"
+										th:src="@{${sanpham.imgURL}}">
 								</div>
 							</div>
 						</div>

@@ -1,10 +1,24 @@
 <!DOCTYPE html>
 <html>
-<head>
-<div th:replace="/header :: header"></div>
+<head th:replace="/header :: header">
 </head>
 <body>
 	<div th:replace="/header :: navbar"></div>
+	<main class="page">
+	<section class="clean-block slider">
+		<div class="container">
+			<div class="block-heading">
+				<h2 class="text-info">EBIKE</h2>
+				<p>Trang quản lý</p>
+			</div>
+			<div class="col">
+				<a th:href="@{/quanly/sanpham}" class="btn btn-primary btn-lg">Danh
+					sách Sản Phẩm</a> <a class="btn btn-primary btn-lg">Danh sách Hóa
+					Đơn</a> <a class="btn btn-primary btn-lg">Danh sách Nhà Sản Xuất</a>
+			</div>
+		</div>
+	</section>
+	</main>
 	<div th:replace="/header :: footer"></div>
 </body>
 </html>

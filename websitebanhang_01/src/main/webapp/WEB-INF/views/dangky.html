@@ -15,19 +15,35 @@
 				<p>Đây là trang Đăng Nhập&nbsp;</p>
 			</div>
 			<form th:action="@{/dangky}" th:object="${taikhoan}" method="POST">
-				<p th:if="${param.error}" class="error">Invalid email or
-					password</p>
 				<div class="form-group">
 					<label for="username">Tên Đăng nhập</label><input
 						class="form-control item" type="text" id="username"
-						th:field="*{tenTaiKhoan}">
+						th:field="*{tenTaiKhoan}" required>
 				</div>
 				<div class="form-group">
 					<label for="password">Mật khẩu</label><input class="form-control"
-						type="password" id="password" th:field="*{matKhau}">
+						type="password" id="password" th:field="*{matKhau}" required>
 				</div>
-				<button class="btn btn-primary" type="submit">Đăng Ký</button>
-				<button class="btn btn-light" type="reset">Nhập lại</button>
+				<div class="form-group">
+					<p>
+						Họ và Tên: <input class="form-control" type="text"
+							th:field="*{khachHang.hoTenKhachHang}" />
+					</p>
+					<p>
+						Địa chỉ: <input class="form-control" type="text"
+							th:field="*{khachHang.diaChi}" />
+					</p>
+					<p>
+						Email: <input class="form-control" type="text"
+							th:field="*{khachHang.email}" />
+					</p>
+					<p>
+						Số điện thoại: <input class="form-control" type="text"
+							th:field="*{khachHang.soDienThoai}" />
+					</p>
+					<button class="btn btn-primary" type="submit">Đăng Ký</button>
+					<button class="btn btn-light" type="reset">Nhập lại</button>
+				</div>
 			</form>
 		</div>
 	</section>

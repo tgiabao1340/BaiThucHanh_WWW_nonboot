@@ -42,13 +42,14 @@ public class TaiKhoanServiceImpl implements TaiKhoanService {
 	
 	@Override
 	@Transactional
-	public void update(TaiKhoan taiKhoan) {
-		Optional<TaiKhoan> tk = taiKhoanRepository.findById(taiKhoan.getMaTaiKhoan());
-		System.out.println(taiKhoan.getKhachHang());
+	public void update(String maTaiKhoan,KhachHang khachhang) {
+		Optional<TaiKhoan> tk = taiKhoanRepository.findById(maTaiKhoan);
 		if(tk.isPresent()) {
-			taiKhoan.getKhachHang().setMaKhachHang(tk.get().getMaTaiKhoan());
-			tk.get().setKhachHang(taiKhoan.getKhachHang());
-			taiKhoanRepository.save(tk.get());
+			KhachHang kh = khachhang;
+			System.out.println(kh);
+			kh.setMaKhachHang(tk.get().getMaTaiKhoan());
+			tk.get().setKhachHang(khachhang);
+			khachHangRepository.save(kh);
 		}
 		//khachHangRepository.save(taiKhoan.getKhachHang());
 		//taiKhoanRepository.save(taiKhoan);

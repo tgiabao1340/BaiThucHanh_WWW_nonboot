@@ -1,5 +1,6 @@
 package se.iuh.websitebanhang.model;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -8,7 +9,13 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
 @Entity
-public class Role {
+public class Role implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8908493656175044529L;
+
 	@Id
 	private Long id;
 

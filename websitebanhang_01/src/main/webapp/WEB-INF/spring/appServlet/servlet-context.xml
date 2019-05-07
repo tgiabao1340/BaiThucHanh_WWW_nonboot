@@ -26,7 +26,7 @@
 		location="/resources/assets/" />
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->
-		
+
 	<beans:bean id="viewResolver"
 		class="org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
@@ -69,7 +69,9 @@
 			<beans:bean
 				class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 				<beans:property name="generateDdl" value="true" />
-				<beans:property name="showSql" value="true"/>
+				<beans:property name="showSql" value="true" />
+				<beans:property name="databasePlatform"
+					value="org.hibernate.dialect.SQLServerDialect" />
 			</beans:bean>
 		</beans:property>
 		<beans:property name="jpaProperties">
@@ -80,12 +82,12 @@
 	</beans:bean>
 	<context:component-scan
 		base-package="se.iuh.websitebanhang" />
-		<context:component-scan
+	<context:component-scan
 		base-package="se.iuh.websitebanhang.controller" />
-		<context:component-scan
+	<context:component-scan
 		base-package="se.iuh.websitebanhang.service" />
-		<context:component-scan
+	<context:component-scan
 		base-package="se.iuh.websitebanhang.model" />
-		<context:component-scan
+	<context:component-scan
 		base-package="se.iuh.websitebanhang.repository" />
 </beans:beans>

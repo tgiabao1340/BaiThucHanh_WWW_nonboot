@@ -37,7 +37,7 @@
 									<div class="col-md-3">
 										<div class="product-image">
 											<img class="img-fluid d-block mx-auto image"
-												th:src="@{resources/assets/img/tech/default-bike.png}">
+												th:src="@{${sanpham.imgURL}}">
 										</div>
 									</div>
 									<div class="col-md-5 product-info">
@@ -70,9 +70,13 @@
 									</div>
 									<div class="col">
 										<div class="row">
-											<div class="col-auto ml-auto">
-												<button class="btn btn-danger" type="button">Xóa</button>
-											</div>
+											<form
+												th:action="@{/quanly/sanpham/delete/{id}(id=${sanpham.maSanPham})}"
+												method="post">
+												<div class="col-auto ml-auto">
+													<button type="submit" class="btn btn-danger">Xóa</button>
+												</div>
+											</form>
 										</div>
 									</div>
 								</div>
@@ -116,25 +120,44 @@
 									<div class="form-group">
 										<label for="tenSanPham">Tên Sản phẩm</label> <input
 											type="text" class="form-control" id="tenSanPham"
-											th:field="*{tenSanPham}">
+											th:field="*{tenSanPham}" required>
 									</div>
 									<div class="form-group">
+										<!--  <form method="POST" enctype="multipart/form-data" action="@{/quanly/sanpham(page=${pageNumber})}">
+											<label for="moTa">Hình ảnh :</label> <input type="file"
+												name="file" class="form-control" > <input type="submit"
+												value="Upload" />
+											</tr>
+											</table>
+										</form>
+										-->
+										<label for="imgURL">URL Hình ảnh :</label> <input type="text"
+											class="form-control" id="imgURL" th:field="*{imgURL}" required>
+									</div>
+
+									<div class="form-group">
 										<label for="moTa">Mô tả</label> <input type="text"
-											class="form-control" id="moTa" th:field="*{moTa}">
+											class="form-control" id="moTa" th:field="*{moTa}" required>
 									</div>
 									<div class="form-group">
 										<label for="donGia">Đơn Giá</label> <input type="text"
-											class="form-control" id="donGia" th:field="*{donGia}">
+											class="form-control" id="donGia" th:field="*{donGia}" required>
 									</div>
 									<div class="form-group">
 										<label for="soLuongTon">Số lượng</label> <input type="text"
-											class="form-control" id="soLuongTon" th:field="*{soLuongTon}">
+											class="form-control" id="soLuongTon" th:field="*{soLuongTon}" required>
 									</div>
 									<div class="form-group">
 										<label for="namSanXuat">Năm Sản xuất</label> <input
 											type="number" class="form-control" id="namSanXuat"
-											th:field="*{namSanXuat}">
+											th:field="*{namSanXuat}" required>
 									</div>
+										<select class="form-control custom-select mr-sm-2" th:field="*{nhaSanXuat.maNhaSanXuat}">
+											<option value="">--</option>
+											<option th:each="nsx : ${listNsx}"
+												th:value="${nsx.maNhaSanXuat}"
+												th:utext="${nsx.tenNhaSanXuat}" />
+										</select>
 								</form>
 							</div>
 						</div>

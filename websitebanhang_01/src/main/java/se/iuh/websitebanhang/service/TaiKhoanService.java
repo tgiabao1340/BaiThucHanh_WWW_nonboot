@@ -1,5 +1,6 @@
 package se.iuh.websitebanhang.service;
 
+import se.iuh.websitebanhang.model.KhachHang;
 import se.iuh.websitebanhang.model.TaiKhoan;
 
 public interface TaiKhoanService {
@@ -7,5 +8,5 @@ public interface TaiKhoanService {
 
     TaiKhoan findByTen(String ten);
     
-    void update(TaiKhoan taiKhoan);
+    void update(String maTaiKhoan,KhachHang khachhang);
 }

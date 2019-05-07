@@ -60,15 +60,16 @@ public class DemoApplication {
 			Role role_user = new Role();
 			role_user.setId((long) 2);
 			role_user.setTen("user");
-			taiKhoan.setRoles(new HashSet<>(Arrays.asList(roleRepository.findByTen("user"),roleRepository.findByTen("admin"))));		
+			taiKhoan.setRoles(new HashSet<>(Arrays.asList(role_user,role_admin)));		
 			roleRepository.save(role_admin);
 			roleRepository.save(role_user);
-			//khachHangRepository.save(kh);
+//			khachHangRepository.save(kh);
 			taiKhoanService.save(taiKhoan);
 			//Init SanPham
 			nhaSanXuatRepository.save(new NhaSanXuat("asam-nsx", "asama", "odaudo"));
-			sanPhamRepository.save(new SanPham(12f, "Xe dap Asama", "Xe dap loai 1", 2010, "/resoures/image/sp-asma-01.jpg", nhaSanXuatRepository.findById("asam-nsx").get()));
-			sanPhamRepository.save(new SanPham(12f, "Xe dap Asama", "Xe dap loai 1", 2010, "/resoures/image/sp-asma-0.jpg", nhaSanXuatRepository.findById("asam-nsx").get()));
+			nhaSanXuatRepository.save(new NhaSanXuat("htc-nsx", "htc", "odaudo"));
+			//sanPhamRepository.save(new SanPham(12f, "Xe dap Asama", "Xe dap loai 1", 2010, "/resoures/image/sp-asma-01.jpg", nhaSanXuatRepository.findById("asam-nsx").get()));
+			//sanPhamRepository.save(new SanPham(12f, "Xe dap Asama", "Xe dap loai 1", 2010, "/resoures/image/sp-asma-0.jpg", nhaSanXuatRepository.findById("asam-nsx").get()));
 		};
 	}
 }
