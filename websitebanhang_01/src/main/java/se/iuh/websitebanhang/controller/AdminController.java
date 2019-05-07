@@ -50,21 +50,13 @@ public class AdminController {
 			List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPage).boxed().collect(Collectors.toList());
 			model.addAttribute("pageNumbers", pageNumbers);
 		}
-		SanPham sanphamnew = new SanPham();
-		//TEST
-		Random rd = new Random();
-		int maSp = rd.nextInt();
-		//----
-		sanphamnew.setMaSanPham(""+maSp);
-		sanphamnew.setNhaSanXuat(new NhaSanXuat("nsx"+maSp,"abc","odaudo"));
-		model.addAttribute("sanphamnew", sanphamnew);
 		model.addAttribute("listSanPham", sanPhamRepository.findSanPhams(pageable));
 		return "quanly-sanpham";
 	}
 	@PostMapping("/quanly/sanpham")
 	public String addSanPham(@ModelAttribute(name = "sanpham") SanPham sanPham) {
 		if(sanPhamRepository.save(sanPham).equals(sanPham)) {
-			return "test-result";
+			return "redirect:/quanly/sanpham";
 		}
 		return null;
 	}

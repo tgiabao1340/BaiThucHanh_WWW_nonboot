@@ -12,22 +12,24 @@
 			</div>
 
 			<div class="container">
-				<form action="" th:object="${taikhoanct}">
+				<form th:action="@{/update-tk}" th:object="${taikhoanct}" method="post">
+					<p><input type="hidden" th:field="*{maTaiKhoan}" th:value="*{maTaiKhoan}" /></p>
 					<p>
-						Tên tài khoản: <input type="text" th:field="*{tenTaiKhoan}" />
+						Tên tài khoản: <input type="text" th:field="*{tenTaiKhoan}" th:value="*{tenTaiKhoan}" />
 					</p>
 					<p>
-						Họ và Tên: <input type="text" th:field="*{khachHang.hoTenKhachHang}" />
+						Họ và Tên: <input type="text" th:field="*{khachHang.hoTenKhachHang}" th:value="*{khachHang.hoTenKhachHang}"  />
 					</p>
 					<p>
-						Địa chỉ: <input type="text" th:field="*{khachHang.diaChi}" />
+						Địa chỉ: <input type="text" th:field="*{khachHang.diaChi}" th:value="*{khachHang.diaChi}" />
 					</p>	
 					<p>
-						Email: <input type="text" th:field="*{khachHang.email}" />
+						Email: <input type="text" th:field="*{khachHang.email}" th:value="*{khachHang.email}"/>
 					</p>
 					<p>
-						Số điện thoại: <input type="text" th:field="*{khachHang.soDienThoai}" />
+						Số điện thoại: <input type="text" th:field="*{khachHang.soDienThoai}" th:value="*{khachHang.soDienThoai}" />
 					</p>
+					<button type="submit" class="btn btn-primary">Lưu</button>
 				</form>
 			</div>
 		</div>

@@ -6,4 +6,6 @@ public interface TaiKhoanService {
 	boolean save(TaiKhoan taikhoan);
 
     TaiKhoan findByTen(String ten);
+    
+    void update(TaiKhoan taiKhoan);
 }

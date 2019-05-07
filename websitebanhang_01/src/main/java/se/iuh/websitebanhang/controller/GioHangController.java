@@ -14,6 +14,7 @@ import se.iuh.websitebanhang.repository.KhachHangRepository;
 import se.iuh.websitebanhang.repository.SanPhamRepository;
 import se.iuh.websitebanhang.service.GioHangService;
 import se.iuh.websitebanhang.service.TaiKhoanService;
+import se.iuh.websitebanhang.service.UserLoginService;
 
 
 @Controller
@@ -30,6 +31,8 @@ public class GioHangController {
 	
 	@Autowired
 	private TaiKhoanService taiKhoanService;
+	@Autowired
+	private UserLoginService userLoginService;
 	
 	@GetMapping("/giohang")
 	public String xemGioHang(Model model) {
@@ -48,12 +51,14 @@ public class GioHangController {
 		return "redirect:/giohang";
 	}
 	@GetMapping("/giohang/thanhtoan")
-	public String thanhtoan(Authentication authentication) {
-		TaiKhoan taiKhoan = taiKhoanService.findByTen(authentication.getName());
-		Optional<KhachHang> khachHang = khachHangRepository.findById(taiKhoan.getMaTaiKhoan());
-		if(khachHang.isPresent()) {
-			gioHangService.thanhToan(khachHang.get());
-			return "redirect:/";
+	public String thanhtoan() {
+		TaiKhoan taiKhoan = userLoginService.getTaiKhoanLogin();
+		if(taiKhoan != null) {
+			Optional<KhachHang> khachHang = khachHangRepository.findById(taiKhoan.getMaTaiKhoan());
+			if(khachHang.isPresent()) {
+				gioHangService.thanhToan(khachHang.get());
+				return "redirect:/";
+			}
 		}
 		return "redirect:/giohang";
 	}

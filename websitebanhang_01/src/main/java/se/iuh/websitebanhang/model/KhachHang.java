@@ -3,7 +3,9 @@ package se.iuh.websitebanhang.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -25,7 +27,7 @@ public class KhachHang implements Serializable{
 	private String email;
 	private String soDienThoai;
 	private String diaChi;
-	@OneToOne(mappedBy = "khachHang")
+	@OneToOne(mappedBy = "khachHang", cascade = CascadeType.ALL)
 	@PrimaryKeyJoinColumn
 	private TaiKhoan taiKhoan;
 	@OneToMany(mappedBy = "khachHang")

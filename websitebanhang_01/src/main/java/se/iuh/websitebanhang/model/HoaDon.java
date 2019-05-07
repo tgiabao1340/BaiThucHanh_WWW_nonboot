@@ -28,7 +28,7 @@ public class HoaDon implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="maKhachHang",referencedColumnName = "maKhachHang")
 	private KhachHang khachHang;
-	@OneToMany(mappedBy ="hoaDon", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy ="hoaDon")
 	private List<ChiTietHoaDon> dssp;
 	
 	public HoaDon() {

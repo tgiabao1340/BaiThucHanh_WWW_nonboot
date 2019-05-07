@@ -2,6 +2,7 @@ package se.iuh.websitebanhang.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
@@ -19,7 +20,7 @@ public class ChiTietHoaDon implements Serializable {
 	@JoinColumn(name="mahoadon",referencedColumnName = "maHoaDon")
 	private HoaDon hoaDon;
 	@Id
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="maSanPham", referencedColumnName = "maSanPham")
 	private SanPham sanPham;
 	private double donGia;

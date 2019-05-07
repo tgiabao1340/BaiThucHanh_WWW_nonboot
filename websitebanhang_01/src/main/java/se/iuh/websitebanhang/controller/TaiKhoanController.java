@@ -95,14 +95,15 @@ public class TaiKhoanController {
 	public String currentUserName(Model model) {
 		if(userLoginService.getTaiKhoanLogin()!=null) {
 			model.addAttribute("taikhoanct", userLoginService.getTaiKhoanLogin());
-			System.out.println();
 			return "taikhoan";
 		}
 		return "redirect:/";
 	}
-	@GetMapping(value = "/taikhoan")
-	public TaiKhoan getLoginUser() {
-		return userLoginService.getTaiKhoanLogin();
+	@RequestMapping(value = "/update-tk", method = RequestMethod.POST)
+	public String updateUser(@ModelAttribute("taikhoanct") TaiKhoan taiKhoan) {
+		
+		TaiKhoanService.update(taiKhoan);
+		
+		return "redirect:/taikhoanct";
 	}
-
 }

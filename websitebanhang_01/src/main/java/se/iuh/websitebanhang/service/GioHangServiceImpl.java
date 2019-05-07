@@ -20,6 +20,7 @@ import se.iuh.websitebanhang.model.ChiTietHoaDon;
 import se.iuh.websitebanhang.model.HoaDon;
 import se.iuh.websitebanhang.model.KhachHang;
 import se.iuh.websitebanhang.model.SanPham;
+import se.iuh.websitebanhang.repository.ChiTietHoaDonRepository;
 import se.iuh.websitebanhang.repository.HoaDonRepository;
 import se.iuh.websitebanhang.repository.SanPhamRepository;
 
@@ -32,7 +33,10 @@ public class GioHangServiceImpl implements GioHangService {
 
 	@Autowired
 	private HoaDonRepository hoaDonRepository;
-
+	
+	@Autowired
+	private ChiTietHoaDonRepository chiTietHoaDonRepository;
+	
 	private Map<SanPham, Integer> danhSachSanPham = new HashMap<>();
 	
 	@Override
@@ -76,6 +80,7 @@ public class GioHangServiceImpl implements GioHangService {
 		SanPham sanpham;
 		for (Map.Entry<SanPham, Integer> entry : danhSachSanPham.entrySet()) {
 			Optional<SanPham> temp = sanPhamRepository.findById(entry.getKey().getMaSanPham());
+			System.out.println(temp.get());
 			sanpham = temp.get();
 			if(sanpham.getSoLuongTon()<entry.getValue()) {
 				
@@ -88,8 +93,11 @@ public class GioHangServiceImpl implements GioHangService {
 			entry.getKey().setSoLuongTon(sanpham.getSoLuongTon()-entry.getValue());
 		}
 		hd.setDssp(listct);
+		
 		hd.setKhachHang(khachHang);
+		
 		hoaDonRepository.save(hd);
+		chiTietHoaDonRepository.saveAll(listct);
 		sanPhamRepository.saveAll(danhSachSanPham.keySet());
 		danhSachSanPham.clear();
 	}

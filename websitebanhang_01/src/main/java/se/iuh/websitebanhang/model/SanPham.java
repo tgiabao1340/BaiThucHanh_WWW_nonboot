@@ -3,11 +3,15 @@ package se.iuh.websitebanhang.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 public class SanPham implements Serializable {
@@ -17,6 +21,8 @@ public class SanPham implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
+	@GeneratedValue(generator="system-uuid")
+	@GenericGenerator(name="system-uuid", strategy = "uuid")
 	private String maSanPham;
 	private double donGia;
 	private String tenSanPham;
@@ -33,6 +39,16 @@ public class SanPham implements Serializable {
 	
 	public SanPham() {
 		super();
+	}
+	public SanPham(double donGia, String tenSanPham, String moTa, int namSanXuat,String imgURL, NhaSanXuat nsx) {
+		super();
+		this.nhaSanXuat = nsx;
+		this.donGia = donGia;
+		this.tenSanPham = tenSanPham;
+		this.moTa = moTa;
+		this.namSanXuat = namSanXuat;
+		this.soLuongTon = 1;
+		this.imgURL = imgURL;
 	}
 	public SanPham(String maSanPham, double donGia, String tenSanPham, String moTa, int namSanXuat,String imgURL) {
 		super();
