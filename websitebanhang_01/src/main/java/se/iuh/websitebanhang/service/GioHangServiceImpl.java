@@ -105,9 +105,9 @@ public class GioHangServiceImpl implements GioHangService {
 	@Override
 	@Transactional
 	public BigDecimal getTongTien() {
-		BigDecimal tongTien = new BigDecimal(0);
+		BigDecimal tongTien = BigDecimal.ZERO;
 		for (Map.Entry<SanPham, Integer> entry : danhSachSanPham.entrySet()) {
-			tongTien.add(BigDecimal.valueOf(entry.getKey().getDonGia()));
+			tongTien = tongTien.add(new BigDecimal(entry.getKey().getDonGia()*entry.getValue()));
 		}
 		return tongTien;
 	}

@@ -11,8 +11,8 @@
 	<section class="clean-block clean-form dark">
 		<div class="container">
 			<div class="block-heading">
-				<h2 class="text-info">Đăng Nhập</h2>
-				<p>Đây là trang Đăng Nhập&nbsp;</p>
+				<h2 class="text-info">Đăng Ký</h2>
+				<p>Đây là trang Đăng Ký&nbsp;</p>
 			</div>
 			<form th:action="@{/dangky}" th:object="${taikhoan}" method="POST">
 				<div class="form-group">
@@ -34,11 +34,11 @@
 							th:field="*{khachHang.diaChi}" />
 					</p>
 					<p>
-						Email: <input class="form-control" type="text"
-							th:field="*{khachHang.email}" />
+						Email: <input class="form-control" type="email"
+							th:field="*{khachHang.email}"  />
 					</p>
 					<p>
-						Số điện thoại: <input class="form-control" type="text"
+						Số điện thoại: <input class="form-control" type="number"
 							th:field="*{khachHang.soDienThoai}" />
 					</p>
 					<button class="btn btn-primary" type="submit">Đăng Ký</button>

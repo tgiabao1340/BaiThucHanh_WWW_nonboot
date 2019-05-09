@@ -31,7 +31,7 @@ public class SanPhamController {
 
 	@RequestMapping(value = "/sanpham")
 	public String listSanPham(Model model,
-			@RequestParam(name="page",required = false, defaultValue = "1") Optional<Integer> page ,
+			@RequestParam(name="page",required = false, defaultValue = "2") Optional<Integer> page ,
 			@RequestParam(name="size",required = false, defaultValue = "6") Integer size,
 			@RequestParam(name="sort",required = false, defaultValue = "ASC") String sort
 			) {
@@ -55,7 +55,7 @@ public class SanPhamController {
 		model.addAttribute("listNhaSanXuat",nhaSanXuatRepository.findAll());
 		return "sanpham";
 	}
-	
+
 	@RequestMapping(value = "/sanpham/{maSanPham}")
 	public String getChitietSanPham(Model model, @PathVariable(name = "maSanPham") String maSanPham) {
 		Optional<SanPham> sp = sanPhamRepository.findById(maSanPham);

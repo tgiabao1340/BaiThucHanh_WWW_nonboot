@@ -40,6 +40,7 @@ public class GioHangController {
 		model.addAttribute("tongtien",gioHangService.getTongTien());
 		return "giohang";
 	}
+	
 	@GetMapping("/giohang/themsanpham/{maSanPham}")
 	public String themSanPham(@PathVariable("maSanPham") String maSanPham) {
 		sanPhamRepository.findById(maSanPham).ifPresent(gioHangService::themSanPham);

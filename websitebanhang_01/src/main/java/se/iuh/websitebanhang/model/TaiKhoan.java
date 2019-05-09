@@ -32,7 +32,7 @@ public class TaiKhoan implements Serializable {
 	@JoinColumn(name="maTaiKhoan", referencedColumnName = "maKhachHang")
 	private KhachHang khachHang;
 
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)	
 	private Set<Role> roles;
 
 	public TaiKhoan() {

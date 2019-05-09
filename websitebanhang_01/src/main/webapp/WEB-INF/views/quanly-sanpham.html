@@ -44,7 +44,7 @@
 										<a href="#" class="product-name"
 											th:text="${sanpham.tenSanPham}"></a><a href="#"><i
 											class="fa fa-edit"></i></a>
-										<p class="text-black-50" th:text="${sanpham.maSanPham}"></p>
+										<!-- <p class="text-black-50" th:text="${sanpham.maSanPham}"></p> -->
 										<div class="product-specs">
 											<div>
 												<span>Mô tả:&nbsp;</span><span class="value"
@@ -62,7 +62,7 @@
 									</div>
 									<div class="col-6 col-md-2 quantity">
 										<label class="d-none d-md-block" for="quantity">Số
-											lượng tồn</label><input type="number" value="1" id="number"
+											lượng tồn</label><input type="number" th:value="${sanpham.soLuongTon}" id="number"
 											class="form-control quantity-input">
 									</div>
 									<div class="col-6 col-md-2 price">
@@ -140,11 +140,11 @@
 											class="form-control" id="moTa" th:field="*{moTa}" required>
 									</div>
 									<div class="form-group">
-										<label for="donGia">Đơn Giá</label> <input type="text"
+										<label for="donGia">Đơn Giá</label> <input type="number"
 											class="form-control" id="donGia" th:field="*{donGia}" required>
 									</div>
 									<div class="form-group">
-										<label for="soLuongTon">Số lượng</label> <input type="text"
+										<label for="soLuongTon">Số lượng</label> <input type="number"
 											class="form-control" id="soLuongTon" th:field="*{soLuongTon}" required>
 									</div>
 									<div class="form-group">

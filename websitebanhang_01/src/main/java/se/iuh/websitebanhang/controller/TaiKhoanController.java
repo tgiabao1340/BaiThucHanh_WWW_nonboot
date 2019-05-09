@@ -75,7 +75,7 @@ public class TaiKhoanController {
 	public String createNewUser(@ModelAttribute("taikhoan") TaiKhoan taiKhoan) {
 		taiKhoan.setRoles(new HashSet<>(Arrays.asList(roleRepository.findByTen("user"))));
 		if(TaiKhoanService.save(taiKhoan)) {
-			khachHangRepository.save(taiKhoan.getKhachHang());
+			//khachHangRepository.save(taiKhoan.getKhachHang());
 			return "redirect:/";
 		}
 		return "dangky";

@@ -71,7 +71,7 @@
 				<beans:property name="generateDdl" value="true" />
 				<beans:property name="showSql" value="true" />
 				<beans:property name="databasePlatform"
-					value="org.hibernate.dialect.SQLServerDialect" />
+					value="org.hibernate.dialect.SQLServer2012Dialect" />
 			</beans:bean>
 		</beans:property>
 		<beans:property name="jpaProperties">
